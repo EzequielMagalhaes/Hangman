@@ -4,7 +4,6 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -37,29 +36,25 @@ public class Hangman extends JFrame {
         pn.add(new JLabel());
         pn.add(lbEscondida);
         this.add(pn);
-        
         JPanel pn2 = new JPanel();
         pn2.add(textField);
         pn2.add(buttonOK);
-        
+ 
         buttonOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 			}
 		});
-
         this.add(pn,BorderLayout.CENTER);
         this.add(pn2,BorderLayout.SOUTH);
         this.setVisible(true);
     }
-
     private void esconderPalavra() {
         palavraEscondida = "";
         for (int i = 0; i < palavraSorteada.length(); i += 1) {
             palavraEscondida += "_ ";
         }
     }
-
     private boolean verificarLetra(char c) {
         for (int i = 0; i < palavraSorteada.length(); i += 1) {
             if (c == palavraSorteada.charAt(i)) {
@@ -68,7 +63,6 @@ public class Hangman extends JFrame {
         }
         return false;
     }
-
     private void substituirTraco(char c) {
         String mnt = "";
         for (int i = 0; i < palavraSorteada.length(); i += 1) {
@@ -81,7 +75,6 @@ public class Hangman extends JFrame {
         }
         palavraEscondida = mnt;                
     }
-
     public void paint(Graphics g) {
         super.paint(g);
         g.drawLine(110,100,110,300);
@@ -112,7 +105,6 @@ public class Hangman extends JFrame {
             g.fillOval(200,120,20,30);
         }
     }
-
     public static void main(String [] args) {
         new Hangman();
     }
