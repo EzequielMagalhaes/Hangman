@@ -2,9 +2,14 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class Hangman extends JFrame {
 
@@ -16,6 +21,8 @@ public class Hangman extends JFrame {
     private String palavraSorteada;
     private String palavraEscondida;
     private JLabel lbEscondida;
+    private JTextField textField = new JTextField("",3);
+    private JButton buttonOK = new JButton("OK");
 
     public Hangman() {
         this.setTitle("Enforcado");
@@ -30,6 +37,19 @@ public class Hangman extends JFrame {
         pn.add(new JLabel());
         pn.add(lbEscondida);
         this.add(pn);
+        
+        JPanel pn2 = new JPanel();
+        pn2.add(textField);
+        pn2.add(buttonOK);
+        
+        buttonOK.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+
+        this.add(pn,BorderLayout.CENTER);
+        this.add(pn2,BorderLayout.SOUTH);
         this.setVisible(true);
     }
 
