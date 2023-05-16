@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Hangman extends JFrame {
-
+	
     private int errei = 0;
     private String [] palavras = {
         "ENFORCADO", "REPROVADO", "REARRUMADO", "FIGUEIRA",
@@ -47,6 +47,8 @@ public class Hangman extends JFrame {
                     repaint();
                     if (errei >=6) {
                     	JOptionPane.showMessageDialog(Hangman.this, "Voce perdeu");
+                    	limparDesenho();
+                    	repaint();
                     }
                 }
                 textField.setText("");
@@ -82,6 +84,9 @@ public class Hangman extends JFrame {
             }    
         }
         palavraEscondida = mnt;                
+    }
+    private void limparDesenho() {
+        errei = 0;
     }
     public void paint(Graphics g) {
         super.paint(g);
