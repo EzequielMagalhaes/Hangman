@@ -1,14 +1,6 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 public class Hangman extends JFrame {
 
@@ -42,7 +34,23 @@ public class Hangman extends JFrame {
  
         buttonOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				char letra = textField.getText().toUpperCase().charAt(0);
+                boolean acertou = verificarLetra(letra);
+                if(acertou) {
+                    substituirTraco(letra);
+                    lbEscondida.setText(palavraEscondida);
+                    if(!palavraEscondida.contains("_")){
+                        JOptionPane.showMessageDialog(Hangman.this, "Parabens");
+                    }
+                }else {
+                    errei ++;
+                    repaint();
+                    if (errei >=6) {
+                    	JOptionPane.showMessageDialog(Hangman.this, "Voce perdeu");
+                    }
+                }
+                textField.setText("");
+                textField.requestFocus();
 			}
 		});
         this.add(pn,BorderLayout.CENTER);
