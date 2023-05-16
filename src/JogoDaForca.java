@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Hangman extends JFrame {
+public class JogoDaForca extends JFrame {
 	
     private int errei = 0;
     private String [] palavras = {
@@ -15,7 +15,7 @@ public class Hangman extends JFrame {
     private JTextField textField = new JTextField("",3);
     private JButton buttonOK = new JButton("OK");
 
-    public Hangman() {
+    public JogoDaForca() {
         this.setTitle("Enforcado");
         this.setSize(600,400);
         this.setResizable(false);
@@ -40,13 +40,13 @@ public class Hangman extends JFrame {
                     substituirTraco(letra);
                     lbEscondida.setText(palavraEscondida);
                     if(!palavraEscondida.contains("_")){
-                        JOptionPane.showMessageDialog(Hangman.this, "Parabens");
+                        JOptionPane.showMessageDialog(JogoDaForca.this, "Parabéns!! Você ganhou.");
                     }
                 }else {
                     errei ++;
                     repaint();
                     if (errei >=6) {
-                    	JOptionPane.showMessageDialog(Hangman.this, "Voce perdeu");
+                    	JOptionPane.showMessageDialog(JogoDaForca.this, "Uma pena!! Você perdeu =(");
                     	limparDesenho();
                     	repaint();
                     }
@@ -119,6 +119,6 @@ public class Hangman extends JFrame {
         }
     }
     public static void main(String [] args) {
-        new Hangman();
+        new JogoDaForca();
     }
 }
